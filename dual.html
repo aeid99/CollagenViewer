@@ -1,0 +1,546 @@
+<!--Designed and coded by Aya Eid: aeid@iit.edu -->
+<html>
+<head>
+<title>Interact With Collagen!</title> 
+	<link type="text/css" href="css/redmond/jquery-ui-1.8.9.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+
+	<link rel="stylesheet" href="css/customAccordion.css" />  
+	<link rel="stylesheet" href="css/main.css" />   	
+	<script src="jmol/Jmol.js" type="text/javascript" ></script>
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jquery-ui-1.8.6.custom.js"></script>
+	<script type="text/javascript" src="scripts/globalVar.js"></script>
+	<script type="text/javascript" src="scripts/fcustomHoverL.js"></script>
+	<script type="text/javascript" src="scripts/fcustomHoverR.js"></script>
+	<script type="text/javascript" src="scripts/onLoad.js" ></script>
+	<script type="text/javascript" src="scripts/feedBack.js" ></script>
+	<script type="text/javascript" src="scripts/molSelectL.js"></script>
+	<script type="text/javascript" src="scripts/molSelectR.js"></script>
+	<script type="text/javascript" src="scripts/fsearchSeq.js"></script>
+	<script type="text/javascript" src="scripts/faccessMap.js"></script>
+	<script type="text/javascript" src="scripts/display.js"></script>
+	<script type="text/javascript" src="scripts/siteSelectL.js"></script>
+	<script type="text/javascript" src="scripts/siteSelectR.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+            $('#accordion').accordion({
+				autoHeight: false,
+				collapsible: true,
+				navigation: true				
+			});
+        });
+		
+		$(document).ready(function() {
+            $('#accordionR').accordion({
+				autoHeight: false,
+				collapsible: true,
+				navigation: true				
+			});
+        });
+		
+		$(document).ready(function() {
+            $('#mutateAccordion').accordion({
+				autoHeight: false,
+				collapsible: true,
+				navigation: true				
+			});
+        });
+		
+		$(document).ready(function() {
+            $('#mutateAccordionR').accordion({
+				autoHeight: false,
+				collapsible: true,
+				navigation: true				
+			});
+        });
+		$(function(){$('#tabs').tabs();});
+		$(function(){$('#tabsR').tabs();});
+    </script>	
+</head>
+
+
+<body onload="onLoadFunc()";>
+     
+
+<div id="header">
+<a href="main.html"><img class="header" src="images/home_header.png" /></a>
+</div> <!-- header -->
+
+<div id="wrapper">
+    <div id="menuTop">
+        <p>
+            <a href="main.html">Home</a>
+            <a href="single.html">Single Display</a>
+            <a href="dual.html">Dual Display</a>
+			<a href="conformations.html">Conformations</a>
+			<a href="sites.html">Sites</a>
+			<a href="references.html">References</a>
+			<a href="feedback.html">Feedback</a>
+            <a href="help.html">Help</a>
+            <a href="contact.html">Contact</a>
+		</p>
+    </div> <!-- menuTop -->
+
+<div id="contentwrapper">
+
+	 <script type="text/javascript">
+    	jmolInitialize("jmol"); 
+      </script>
+	  
+	<table border="1" align="center">		<!--This centers it on the page-->
+		<tr align="center">		<!--This centers it within the table-->
+			<td width=200>  <!--Left Menu-->
+				
+				<div id="tabs" style='width: 190px; height:600px;font-size: 62.5%' align='center'>
+				<ul>
+					<li><a href="#tab1">Sites</a></li>
+					<li><a href="#tab2">Display</a></li>
+					<li><a href="#tab3">+</a></li>
+				</ul>
+		
+			
+				<div id="tab1">
+				
+				<br/>
+				<form name="molChooseLeft" method="post">
+				<select id="molChooseLeft" onChange="molSelectL(this.options[this.selectedIndex].value)">	
+						<optgroup label="Choose Molecule">
+							<option value="practiceLeft">Choose a Molecule</option>
+						</optgroup>
+						<optgroup label="Collagen">
+							<option value="Collagen1">Collagen Type I</option>
+							<option value="Collagen3">3 Microfibrils</option>
+						</optgroup>
+						<optgroup label="Ligands">	
+							<option value="Decorin">Decorin</option>
+							<option value="Biglycan">Biglycan</option>
+						</optgroup>
+					</select>
+				</form>
+				<br/>
+	
+				<h3>Binding Sites</h3>
+	<!--Defines the DEFAULT sites listed for left side-->
+				<div id="siteChoose"> 
+				   <ul id="accordion">  
+					   <li>  
+						   <a href="#head1" class="heading">Default 1</a>  
+						   <ul id="head1">  
+							  <li id="1Left" onClick="siteSelectL(1,'Left')"><a href="javascript:void(0)">Protein 1a</a></li>  
+							  <li id="2Left" onClick="siteSelectL(2,'Left')"><a href="javascript:void(0)">Protein 1b</a></li>
+						   </ul>  
+					   </li>  
+					   <li>  
+						   <a href="#head2" class="heading">Default 2</a>  
+						   <ul id="head2">  
+							  <li id="3Left" onClick="siteSelectL(3,'Left')"><a href="#">Protein 2a</a></li> 
+						   </ul>  
+					   </li>    
+					</ul>
+				</div>
+
+				<div align="center">
+					<input onClick="siteClear('Left');" type="button" value="Reset" />
+				</div>
+				<br /><br />
+				
+				<h3>Mutation Sites</h3>
+				<div id="mutateChoose"> 
+				   <ul id="mutateAccordion">  
+					   <li>  
+						   <a href="#mut1" class="heading">Type I (mild)</a>  
+						   <ul id="mut1">  
+							  <li id="1LeftMut" onClick=""><a href="javascript:void(0)">MMP-1</a></li>  
+							  <li id="2LeftMut" onClick=""><a href="javascript:void(0)">MMP-2</a></li>
+						   </ul>  
+					   </li>  
+					   <li>  
+						   <a href="#mut2" class="heading">Type II (lethal)</a>  
+						   <ul id="mut2">  
+							  <li id="3LeftMut" onClick=""><a href="javascript:void(0)">MFS</a></li> 
+							  <li id="4LeftMut" onClick=""><a href="javascript:void(0)">ICA</a></li> 
+						   </ul>  
+					   </li>   
+						<li>  
+						   <a href="#mut3" class="heading">Type III (severe)</a>  
+						   <ul id="mut3">  
+							  <li id="5LeftMut" onClick=""><a href="javascript:void(0)">OI</a></li> 
+						   </ul>  
+					   </li> 
+ 
+					</ul>
+				</div>
+				
+				<div align="center">
+					<input onClick="siteClear('Left');" type="button" value="Reset" />
+				</div>
+				<br/><br/>
+				</div> <!--Sites tab - end div-->
+				
+				
+
+				<div id="tab2">
+				
+					<br/></br>
+					<h3>Shape</h3>
+									
+<!----------Defines the type of display (ball and stick, carbon trace, or ribbon) for chosen image----------------------->
+					
+						<div>
+							<input type="checkbox" id="BnSLeft" onclick="imageStyle('Left')" checked>BallnStick
+							<input type="checkbox" id="TraceLeft" onclick="imageStyle('Left')" unchecked>Trace
+							<input type="checkbox" id="RibLeft" onclick="imageStyle('Left')" unchecked>Ribbons
+							</font>
+						</div>
+
+						</br></br>
+						<h3>Size</h3>
+					
+						<b>Atoms:</b>
+
+						<font size="1">
+						<input type="radio" id="AoffLeft" name="atomsL" onClick="Atoms('Left')">	off
+						<input type="radio" id="A35Left" name="atomsL" onClick="Atoms('Left')" checked>35%
+						<input type="radio" id="A100Left" name="atomsL" onClick="Atoms('Left')">	100%
+						</font>
+		<!-----------------------------------------------Bonds-------------------------------------------------------->
+						</br>
+						<b>Bonds: </b> 
+						<font size="1">
+						<input type="radio" id="BoffLeft" name="bondsL" onClick="Bonds('Left')">		off
+						<input type="radio" id="B25Left" name="bondsL" onClick="Bonds('Left')" checked>	25%
+						<input type="radio" id="B50Left" name="bondsL" onClick="Bonds('Left')">		50%
+						</font>
+						</br></br></br>
+						
+						<h3>Color</h3>
+						
+						<b>Atoms: </b>
+						<script type="text/javascript">
+							jmolSetTarget('Left');
+							jmolMenu([
+							["select all;color atoms cpk","Default"],
+							["select all;color atoms white","White"],
+							["select all; color atoms black","Black"],
+							["select :a;color lightblue;select :b;color lightsalmon;select :c;color lightgreen;select all","By Chain"]]);
+							jmolBr();
+						</script>	
+						
+						<b>Background: </b>
+						<script type="text/javascript">
+						//This portion is not selective to the image chosen
+							// Background Color menu:
+							jmolSetTarget('Left');
+							jmolMenu([
+							["background white","White"],
+							["background black","Black"],
+							["background skyblue","Blue"],
+							["background yellow","Yellow"],
+							["background salmon","Salmon"],
+							["background palegreen","Green"]]);
+							jmolBr();	
+						</script>	
+						
+						
+							<!--Allows selected model to start or stop spinning -->
+						<br/><br/>
+						<h3>Effects</h3>
+						<input onClick="Spin('Left');" type="button" value="Spin" />
+					<br/>
+					<br/>
+					</div>
+					
+				<div id="tab3">
+					<br/><br/>
+					<h3>Banding Pattern</h3>
+						<font size="1">
+							<input type="checkbox" id="aLeft" name="bandL" onClick="boundBox('a','Left')">a
+							<input type="checkbox" id="bLeft" name="bandL" onClick="boundBox('b','Left')">b
+							<input type="checkbox" id="cLeft" name="bandL" onClick="boundBox('c','Left')">c
+							<input type="checkbox" id="dLeft" name="bandL" onClick="boundBox('d','Left')">d
+							<input type="checkbox" id="eLeft" name="bandL" onClick="boundBox('e','Left')">e
+						</font>
+					
+					<br/><br/><br/>
+						<input onClick="accessMap('L');" type="button" value="Accessibility Map" />
+					<br/><br/>
+
+				</div><!--Left menu tabbing-->
+						
+			</td>
+			<td>	<!--Left Jmol Applet-->
+				
+								
+				<script type="text/javascript">
+					//LEFT IMAGE
+					jmolApplet([370,500],'load jmol/models/practice.pdb;background white;set hoverCallback "customhoverL";select all;spacefill 35%;wireframe .25;color cpk;zoom 120;define site1 atomno=1, atomno=3; define site2 atomno=2;','Left')
+				</script>
+					
+				<table>
+					<td width="75px" align="center">
+						<img src ="images/arrowZoom.png" border="0" width="100" height="72" alt="navigate" usemap ="#navigate"/>
+						<map name="navigate">
+						  <area shape="rect" coords="38,0,62,25" href="javascript:void(0)" onclick="TranslateDisplay('Left','D')" alt="down"/>
+						  <area shape="rect" coords="0,24,29,47" href="javascript:void(0)" onClick="TranslateDisplay('Left','R')" alt="right"/>
+						  <area shape="rect" coords="71,24,100,47" href="javascript:void(0)" onClick="TranslateDisplay('Left','L')" alt="left"/>
+						  <area shape="rect" coords="38,46,62,72" href="javascript:void(0)" onclick="TranslateDisplay('Left','U')" alt="up"/>
+						  <area shape="circle" coords="40,36,10" href="javascript:void(0)" onClick="ZoomDisplay('Left','in')" alt="zoomIn" />
+						  <area shape="circle" coords="60,36,10" href="javascript:void(0)" onClick="ZoomDisplay('Left','out')" alt="zoomOut" />
+						</map>
+					</td>
+					
+					<td width="400px" align="center">
+						<form name="searchL">
+							<font size="2">Search AA Sequence:  </font>
+							<input type="text" id="searchLeft" name="sequenceL" size="35" onkeypress="return event.keyCode!=13"/>
+							</br>
+							<input type="button" onClick="searchSeq('Left','Next')" value="Next">
+							<input type="button" onClick="searchSeq('Left','All')" value="All">
+							<input type="button" onClick="searchSeq('Left','Clear')" value="Clear">
+						</form>	
+					</td>
+				</table>
+			</td>
+			
+			
+			
+			
+			<td> <!--Right Jmol applet-->
+
+				<script type="text/javascript">
+					//RIGHT IMAGE
+					jmolApplet([370,500],'load jmol/models/practice.pdb;background white;set hoverCallback "customhoverR";select all; backbone only; spacefill 35%;wireframe .25;color cpk;zoom 120;define site1 atomno=1; define site2 atomno=2,atomno=3;','Right')
+				</script>
+				
+				
+				<table>
+					
+					<td width="75px" align="center">					
+						<img src ="images/arrowZoom.png" border="0" width="100" height="72" alt="navigate" usemap ="#navigateR" />
+						<map name="navigateR">
+						  <area shape="rect" coords="38,0,62,25" href="javascript:void(0)" onclick="TranslateDisplay('Right','D')" alt="down"/>
+						  <area shape="rect" coords="0,24,29,47" href="javascript:void(0)" onClick="TranslateDisplay('Right','R')" alt="right"/>
+						  <area shape="rect" coords="71,24,100,47" href="javascript:void(0)" onClick="TranslateDisplay('Right','L')" alt="left"/>
+						  <area shape="rect" coords="38,46,62,72" href="javascript:void(0)" onclick="TranslateDisplay('Right','U')" alt="up"/>
+						  <area shape="circle" coords="40,36,10" href="javascript:void(0)" onClick="ZoomDisplay('Right','in')" alt="zoomIn" />
+						  <area shape="circle" coords="60,36,10" href="javascript:void(0)" onClick="ZoomDisplay('Right','out')" alt="zoomOut" />
+						</map>
+					</td>	
+				
+					<!--CONTROLS FOR TRANSLATION AND ZOOM UNDERNEATH Right APPLET-->
+					<td width="400px" align="center">
+						<form name="searchR">
+							<font size="2">Search AA Sequence:  </font>
+							<input type="text" id="searchRight" name="sequenceR" size="35" onkeypress="return event.keyCode!=13"/>
+							</br>
+							<input type="button" onClick="searchSeq('Right','Next')" value="Next">
+							<input type="button" onClick="searchSeq('Right','All')" value="All">
+							<input type="button" onClick="searchSeq('Right','Clear')" value="Clear">
+						</form>	
+					</td>
+				</table>
+			</td>
+			
+			
+			
+			
+			
+			<td width=200>  <!--Right Menu-->
+			<div id="tabsR" style='width: 190px; height:600px;font-size: 62.5%' align='center'>
+				<ul>
+					<li><a href="#tabR1">Sites</a></li>
+					<li><a href="#tabR2">Display</a></li>
+					<li><a href="#tabR3">+</a></li>
+				</ul>
+		
+			
+				<div id="tabR1">
+
+				<!--Defines the DEFAULT sites listed for left side-->
+				</br>
+					<form name="molChooseRight" method="post">	
+					<select id="molChooseRight" onChange="molSelectR(this.options[this.selectedIndex].value)">
+						<optgroup label="Choose a Molecule">
+							<option value="practiceRight">Choose a Molecule</option>
+						</optgroup>
+						<optgroup label="Collagen">
+							<option value="Collagen1">Collagen Type I</option>
+							<option value="Collagen3">3 Microfibrils</option>
+						</optgroup>
+						<optgroup label="Ligands">	
+							<option value="Decorin">Decorin</option>
+							<option value="Biglycan">Biglycan</option>
+						</optgroup>
+					</select>
+				</form>
+				<br/>
+				
+				<h3>Binding Sites</h3>
+				<!--Defines the DEFAULT sites listed for Right side-->
+		<!--Defines the DEFAULT sites listed for right side-->
+				<div id="siteChoose"> 
+				   <ul id="accordionR">  
+					   <li>  
+						   <a href="#head1" class="heading">Default 1</a>  
+						   <ul id="head1">  
+							  <li id="1Right" onClick="siteSelectR(1,'Right')"><a href="javascript:void(0)">Protein 1a</a></li>  
+							  <li id="2Right" onClick="siteSelectR(2,'Right')"><a href="javascript:void(0)">Protein 1b</a></li>
+						   </ul>  
+					   </li>  
+					   <li>  
+						   <a href="#head2" class="heading">Default 2</a>  
+						   <ul id="head2">  
+							  <li id="3Right" onClick="siteSelectR(3,'Right')"><a href="javascript:void(0)">Protein 2a</a></li> 
+						   </ul>  
+					   </li>    
+					</ul>
+				</div>
+				
+				
+				<!-------ACCESSIBILITY MAP---->
+				<div align="center">
+					<input onClick="siteClear('Right');" type="button" value="Reset" />
+				</div>
+				<br/><br/>
+				
+				<h3>Mutation Sites</h3>
+				<div id="mutateChooseR"> 
+				   <ul id="mutateAccordionR">  
+					   <li>  
+						   <a href="#mutR1" class="heading">Type I (mild)</a>  
+						   <ul id="mutR1">  
+							  <li id="1LeftMut" onClick=""><a href="javascript:void(0)">MMP-1</a></li>  
+							  <li id="2LeftMut" onClick=""><a href="javascript:void(0)">MMP-2</a></li>
+						   </ul>  
+					   </li>  
+					   <li>  
+						   <a href="#mutR2" class="heading">Type II (lethal)</a>  
+						   <ul id="mutR2">  
+							  <li id="3LeftMut" onClick=""><a href="javascript:void(0)">MFS</a></li> 
+							  <li id="4LeftMut" onClick=""><a href="javascript:void(0)">ICA</a></li> 
+						   </ul>  
+					   </li>   
+						<li>  
+						   <a href="#mutR3" class="heading">Type III (severe)</a>  
+						   <ul id="mutR3">  
+							  <li id="5LeftMut" onClick=""><a href="javascript:void(0)">OI</a></li> 
+						   </ul>  
+					   </li> 
+ 
+					</ul>
+				</div>
+						
+			
+				<div align="center">
+					<input onClick="siteClear('Right');" type="button" value="Reset" />
+				</div>
+				<br/><br/>
+				</div> <!--Sites tab - end div-->
+				
+				
+				
+				<div id="tabR2">
+						
+				<!--RIGHT MENU-->
+					<br/></br>
+					<h3>Shape</h3>
+					
+					<!--------------------------------------------------------------------------------------------------------------------------------------------------->
+					<!----------Defines the type of display (ball and stick, carbon trace, or ribbon) for chosen image----------------------->
+						
+						<div>
+							<input type="checkbox" id="BnSRight" onclick="imageStyle('Right')" checked>BallnStick
+							<input type="checkbox" id="TraceRight" onclick="imageStyle('Right')" unchecked>Trace
+							<input type="checkbox" id="RibRight" onclick="imageStyle('Right')" unchecked>Ribbons
+						</div>
+						
+						</br>
+						<h3>Size</h3>
+						
+						<b>Atoms: </b><!--CHANGE THE NAME TO ATOMSL-->
+						<font size="1">
+							<input type="radio" id="AoffRight" name="atomsR" onClick="Atoms('Right')">	off
+							<input type="radio" id="A35Right" name="atomsR" onClick="Atoms('Right')" checked>35%
+							<input type="radio" id="A100Right" name="atomsR" onClick="Atoms('Right')">	100%
+						</font>
+					<!--------------------------------------------------------------------------------------------------------------------------------------------------->
+					<!-----------------------------------------------------------------------Bonds----------------------------------------------------------------------->
+						</br>
+						<b>Bonds: </b>
+						<font size="1">
+							<input type="radio" id="BoffRight" name="bondsR" onClick="Bonds('Right')">off
+							<input type="radio" id="B25Right" name="bondsR" onClick="Bonds('Right')" checked>25%
+							<input type="radio" id="B50Right" name="bondsR" onClick="Bonds('Right')">50%
+						</font>
+						</br><br/>
+						
+						</br>	
+					
+					<h3>Color</h3>
+						<b>Atoms: </b>
+						<script type="text/javascript">
+							jmolSetTarget('Right');
+							jmolMenu([
+							["select all;color atoms cpk","Default"],
+							["select all;color atoms white","White"],
+							["select all; color atoms black","Black"],
+							["select :a;color lightgreen;select :b;color lightblue;select :c;color lightsalmon;select all","By Chain"]]);
+							jmolBr();
+						</script>	
+						<b>Background: </b>
+						<script type="text/javascript">
+						//This portion is not selective to the image chosen
+							// Background Color menu:
+							jmolSetTarget('Right');
+							jmolMenu([
+							["background white","White"],
+							["background black","Black"],
+							["background skyblue","Blue"],
+							["background yellow","Yellow"],
+							["background salmon","Salmon"],
+							["background palegreen","Green"]]);
+							jmolBr();		
+						</script>			
+					<br/><br/>
+						<h3>Effects</h3>
+						<input onClick="Spin('Right');" type="button" value="Spin" />
+					<br/>
+					<br/>
+				
+				</div> <!--END OF TAB2 - display-->
+					
+				<div id="tabR3">
+					<br/><br/>
+					<h3>Banding Pattern</h3>
+						<font size="1">
+							<input type="checkbox" id="aRight" name="bandL" onClick="boundBox('a','Right')">a
+							<input type="checkbox" id="bRight" name="bandL" onClick="boundBox('b','Right')">b
+							<input type="checkbox" id="cRight" name="bandL" onClick="boundBox('c','Right')">c
+							<input type="checkbox" id="dRight" name="bandL" onClick="boundBox('d','Right')">d
+							<input type="checkbox" id="eRight" name="bandL" onClick="boundBox('e','Right')">e
+						</font>
+					
+					<br/><br/><br/>
+						<input onClick="accessMap('R');" type="button" value="Accessibility Map" />
+					<br/><br/>
+
+				</div><!--Right menu tabbing-->
+				
+				</div>
+				
+			</td>
+		</tr>
+	  </table>  
+	
+
+	
+	</div> <!-- content wrapper -->
+	<div id="footer">
+		<p class="copyright">&copy; 2011 Orgel &amp; Eid. All rights reserved.</p>
+	</div> <!-- footer -->
+
+</div> <!-- wrapper -->
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* main.css
+
+/* -- global styles -- */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/bodybkgd2.jpg);
+    background-repeat: repeat-x;
+    background-color: #ffffff;                        
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 10pt;
+    line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Georgia,Times,serif;
+	padding:0;
+}
+
+h1 {
+    color: #8aa635;	 /*green*/
+    font-size: 1.7em;
+}
+
+h2 {
+    color: #38add6; /*light blue*/
+    font-size: 1.4em;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: #1F487C; /*dark blue*/
+    font-size: 1.4em;
+	margin-bottom: 0;
+}
+
+h4 {	/*top of menu for jmol*/
+    color: #000000; /*black*/
+    font-size: 1em;
+	padding: 4px;
+}
+
+h5 {	/*top of menu for jmol*/
+    color: #000000; /*black*/
+    font-size: .8em;
+}
+
+p {
+    margin-top: 0;
+}
+
+a:link {
+    color: #1F487C;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #8aa635;
+}
+
+a:hover {
+    color: #38add6;
+    text-decoration: none;
+}
+
+
+
+/* -- document sections -- */
+
+#wrapper {
+    width: auto;
+   /* margin-left: 13px;
+    margin-right: 13px;*/
+	margin-top: 0px;
+    background-color: #ffffff;
+	background-repeat:repeat-x;
+}
+
+
+
+#contentwrapper {
+    padding: 10px;
+    background-color: #ffffff;
+	width:auto;
+	position:left;
+    
+}
+
+#header {
+    background-image: url(../images/blue.jpg);
+    background-repeat: repeat-x;
+	border: 1px solid;
+}
+
+#header img {
+    border: 0px solid;
+    width: auto;
+    height: 81px;
+	padding-left: 0px;
+}
+
+#footer {
+    background-image: url(../images/navbkgdFooter.jpg);
+    background-repeat: repeat-x;
+	padding-top:11px;
+	padding-bottom:9px;
+	position:relative;
+}
+
+#footer p {
+	
+	text-align: center;
+    font-size: 0.85em;
+    color: #ffffff;
+    
+}
+/* menu */
+
+#menuTop {
+    background-image: url(../images/navbkgd.jpg);
+    background-repeat: repeat-x;
+    padding-top: 12px;
+    padding-left: 20px;
+	padding-bottom: 5px;
+    height: 2.5em;
+    font-size: 1.1em;
+	width:auto;
+}
+
+#menuTop p {
+    margin: 0;	
+	position: relative;
+	white-space: nowrap; 
+	
+}
+
+#menuTop a:link, #menuTop a:visited {
+    font-family: Georgia, Times, serif;
+    color: white;
+    text-decoration: none;
+    padding-right: 20px;
+	padding-left: 20px;
+	text-align: center;
+}
+
+#menuTop a:hover {
+	color: #000033;
+	background-image: url(../images/navbkgdHover.jpg);
+	padding-top: 14px;
+	padding-bottom: 13px;
+    width: auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.tableDemo{
+	border: 1px solid; 
+	overflow: auto; 
+	height:3em;
+	line-height: 1em;
+}
+
+.tableDemo tr:hovertable {
+	padding: 2px 6px;
+	border: 3px;
+}
+
+.tableDemo td:hover {
+	padding: 2px 6px;
+	color:#333333;
+	background-color:#123456; 
+}
+
+
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:10px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;	
+	text-align: center;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#ffffff;
+	
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #a9c6c9;
+	
+}
+
+
+
+
+
+
+
+
+
+/*http://rcswebsolutions.wordpress.com/2007/01/02/scrolling-html-table-with-fixed-header/  */
+div.scrollTableContainer {
+	height: 280px;
+	overflow: auto;
+	width: 970px;
+	margin: 15px 0 0 0;
+	position: relative;
+
+}
+
+/* The different widths below are due to the way the scroll bar is implamented */
+
+/* All browsers (but especially IE) */
+div.scrollTableContainer table {
+width: 970px;
+}
+
+/* Modern browsers (but especially firefox ) */
+html>/**/body div.scrollTableContainer table {
+width: auto;
+
+}
+
+/* Modern browsers (but especially firefox ) */
+html>/**/body div.scrollTableContainer table>tbody {
+overflow: auto;
+height: 250px;
+text-align: center;
+overflow: hidden;
+}
+
+div.scrollTableContainer thead tr {
+position:relative;
+top: expression(offsetParent.scrollTop); /*IE5+ only*/
+/* fixes the header being over too far in IE, doesn’t seem to affect FF */
+left: 0px;
+}
+
+/*prevent Mozilla scrollbar from hiding cell content*/
+div.scrollTableContainer td:last-child {padding-right: 20px;}

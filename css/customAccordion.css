@@ -1,0 +1,266 @@
+/*****Reset*****/
+html, body, div, h1, h3, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote, pre, form, fieldset, table, th, td { margin: 0; padding: 0; }
+
+/*****Basic Definitions*****/
+body { background: #fff; color: #333; font: 12px/16px Georgia, "Times New Roman", Times, serif; }
+h1 { font-size: 10px; line-height: 30px; margin-bottom: 18px; }
+
+a { }
+a:visited { }
+a:hover { text-decoration: none; }
+img { border: none; }
+p, ul, ol, dl, table { margin-bottom: 18px; }
+ul, ol, dd { margin-left: 36px; }
+
+/*****Custom Classes*****/
+.clearing { clear: both; }
+.clearfix { overflow: hidden; }
+.last { margin-bottom: 0; }
+.screenReader { left: -9999px; position: absolute; top: -9999px; }
+
+ul#accordion, ul#accordion ul { list-style: none; margin: 0; }
+ul#accordion { 
+	/*border-bottom: 1px solid #000E2E; */
+	float:center; 
+	width: 165px; 
+}
+ul#accordion li { 
+	/*border: 1px solid #000E2E; */
+	border-bottom: none; 
+	float: center; 
+	width: 161px; 
+	line-height: 7px;
+}
+ul#accordion ul li {	/*Individual elements (protein sites)*/
+	/*border: 1em solid #C2C8D1;*/
+	border-bottom: 1px solid #C2C8D1;
+	color: #999;
+	padding: 5px 0px;
+	float: center; 
+	width: 160px;
+}
+ul#accordion ul li:last-child { border-bottom: none; }
+ul#accordion a.heading {
+	background: #E3F1FC;
+	color: #000000;
+	display: block;
+	font-size: 12px;
+	line-height: 8px;
+	padding: 5px 2px;
+	text-decoration: none;
+	border-style: solid;
+	border-color: #00B9D2;
+	width: 157px;
+}
+ul#accordion a.heading:hover { 
+	background: #00B9D2; 
+	color: #fff; }
+ul#accordion li ul a { 
+	border-bottom: none; 
+	color: #025185; 
+	font-size: 11px;
+	text-decoration: none; }
+ul#accordion li ul a:hover { border-bottom: none; }
+ul#accordion li.ui-accordion-selected a.heading { background: #025185; color: #fff; }
+
+
+
+
+/*Accordion for the Right menu*/
+
+ul#accordionR, ul#accordionR ul { list-style: none; margin: 0; }
+ul#accordionR { 
+	/*border-bottom: 1px solid #000E2E; */
+	float:center; 
+	width: 165px; 
+}
+ul#accordionR li { 
+	/*border: 1px solid #000E2E; */
+	border-bottom: none; 
+	float: center; 
+	width: 163px; 
+	line-height: 7px;
+}
+ul#accordionR ul li {	/*Individual elements (protein sites)*/
+	border: none;
+	border-bottom: 1px solid #C2C8D1;
+	color: #999;
+	padding: 5px 0px;
+	float: center; 
+	width: 161px;
+}
+ul#accordionR ul li:last-child { border-bottom: none; }
+ul#accordionR a.heading {
+	background: #E3F1FC;
+	color: #000000;
+	display: block;
+	font-size: 12px;
+	line-height: 8px;
+	padding: 5px 2px;
+	text-decoration: none;
+	border-style: solid;
+	border-color: #00B9D2;
+	width: 157px;
+}
+ul#accordionR a.heading:hover { 
+	background: #00B9D2; 
+	color: #fff; }
+ul#accordionR li ul a { 
+	border-bottom: none; 
+	color: #025185; 
+	font-size: 11px;
+	text-decoration: none; }
+ul#accordionR li ul a:hover { border-bottom: none; }
+ul#accordionR li.ui-accordionR-selected a.heading { background: #025185; color: #fff; }
+
+
+
+
+/*MUTATION SITES- Left Menu------*/
+ul#mutateAccordion, ul#mutateAccordion ul { list-style: none; margin: 0; }
+ul#mutateAccordion { 
+	/*border-bottom: 1px solid #000E2E; */
+	float:center; 
+	width: 165px; 
+}
+ul#mutateAccordion li { 
+	/*border: 1px solid #000E2E; */
+	border-bottom: none; 
+	float: center; 
+	width: 163px; 
+	line-height: 7px;
+}
+ul#mutateAccordion ul li {	/*Individual elements (protein sites)*/
+	border: none;
+	border-bottom: 1px solid #C2C8D1;
+	color: #999;
+	padding: 5px 0px;
+	float: center; 
+	width: 161px;
+}
+ul#mutateAccordion ul li:last-child { border-bottom: none; }
+ul#mutateAccordion a.heading {
+	background: #F9AEB3;
+	color: #000000;
+	display: block;
+	font-size: 12px;
+	line-height: 8px;
+	padding: 5px 2px;
+	text-decoration: none;
+	border-style: solid;
+	border-color: #FF0000;
+	width: 157px;
+}
+ul#mutateAccordion a.heading:hover { 
+	background: #E60000; 
+	color: #fff; }
+ul#mutateAccordion li ul a { 
+	border-bottom: none; 
+	color: #025185; 
+	font-size: 11px;
+	text-decoration: none; }
+ul#mutateAccordion li ul a:hover { border-bottom: none; }
+ul#mutateAccordion li.ui-accordion-selected a.heading { background: #025185; color: #fff; }
+
+
+
+/*MUTATION SITES- Right Menu------*/
+
+ul#mutateAccordionR, ul#mutateAccordionR ul { list-style: none; margin: 0; }
+ul#mutateAccordionR { 
+	/*border-bottom: 1px solid #000E2E; */
+	float:center; 
+	width: 165px; 
+}
+ul#mutateAccordionR li { 
+	/*border: 1px solid #000E2E; */
+	border-bottom: none; 
+	float: center; 
+	width: 163px; 
+	line-height: 7px;
+}
+ul#mutateAccordionR ul li {	/*Individual elements (protein sites)*/
+	border: none;
+	border-bottom: 1px solid #C2C8D1;
+	color: #999;
+	padding: 5px 0px;
+	float: center; 
+	width: 161px;
+}
+ul#mutateAccordionR ul li:last-child { border-bottom: none; }
+ul#mutateAccordionR a.heading {
+	background: #F9AEB3;
+	color: #000000;
+	display: block;
+	font-size: 12px;
+	line-height: 8px;
+	padding: 5px 2px;
+	text-decoration: none;
+	border-style: solid;
+	border-color: #FF0000;
+	width: 157px;
+}
+ul#mutateAccordionR a.heading:hover { 
+	background: #E60000; 
+	color: #fff; }
+ul#mutateAccordionR li ul a { 
+	border-bottom: none; 
+	color: #025185; 
+	font-size: 11px;
+	text-decoration: none; }
+ul#mutateAccordionR li ul a:hover { border-bottom: none; }
+ul#mutateAccordionR li.ui-accordion-selected a.heading { background: #025185; color: #fff; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+li.highlight {
+	background: yellow;
+}
+
+#siteChoose {
+/*	border-bottom: 8px solid #C2C8D1;*/
+	float: center;
+	clear:right;
+	max-height: 220px;
+	height:auto;
+	overflow:auto;
+	position:relative;
+	width:auto;
+	
+}
+
+#mutateChoose {
+	float: center;
+	clear:right;
+	height: auto;
+	max-height:105px;
+	overflow:auto;
+	position:relative;
+	width:auto;
+}
+
+#molChooseLeft {
+	text-align: center;
+	font-size: 13px;
+	width:180px;
+	height: 22px;
+}
+
+
+#molChooseRight {
+	text-align: center;
+	font-size: 13px;
+	width:180px;
+	height: 22px;
+}
+

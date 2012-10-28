@@ -1,0 +1,55 @@
+http://snipplr.com/view/799/get-url-variables/
+http://www.roseindia.net/dojo/dojo-colorpalette-example.shtml  //COLOR PALATE
+<head>
+
+<!-- Java script libraries/CSS files declared --!>
+<style type="text/css">
+      @import "../dijit/themes/soria/soria.css";
+      @import "/resources/dojo.css";
+	colorPopus{
+		visibility: hidden
+		left: xval
+		top: yval
+		height: h 
+		width: w
+	}
+  </style>
+ <script type="text/javascript" src="dojo.xd.js" djConfig="parseOnLoad: true"></script>
+<!-- declare functions and global variables before body --!>
+<script type="text/javascript">
+          dojo.require("dojo.parser");
+          dojo.require("dijit.ColorPalette");
+	  function showPallet(selectedIndex){
+		
+		var pal = document.getElementById("colorPopup");
+		pal.style.visibility = visible;
+		if (selectedIndex == 1){
+			pal.style.left = sump;
+			pal.style.top = toppers;
+		}	
+	}	
+          function myColorPalette(selectColor) {
+              console.debug(selectColor);
+		
+		var pal = document.getElementById("colorPopup");
+		pal.style.visibility = hidden;
+
+           }
+	function rewriteOnePanel(divName){
+		var div = document.getElementById(divName);
+		div.innerHTML = "copy and paste one panel"
+		
+	}	
+	function rewriteTwoPanel(divName){
+		var div = document.getElementById(divName);
+		div.innerHTML = "copy and paste two panels"
+		
+	}
+function repost(){
+	document.window.href = "main.html#dual";//LOOK UP ANCHOR POints
+}
+</script>
+</head>
+<body>
+ <div id = "colorPopup" dojoType="dijit.ColorPalette" onChange="myColorPalette"></div>
+<input type = "button1" value = "pick color" onClick = "showPallet(1)"/>

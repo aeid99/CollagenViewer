@@ -1,0 +1,67 @@
+<html>
+<head>
+	<style type="text/css">
+	body {
+		margin: 0;
+		padding: 0;                      
+		font-family: Arial,Helvetica,sans-serif;
+		font-size: 10pt;
+		line-height: 1.5em;
+	}
+
+	ul.tabs { 
+		list-style-type: none; 
+		padding: 0; 
+		margin: 0; 
+	} 
+
+	ul.tabs li { 
+		float: left; 
+		font-weight: bold;
+		padding: 0; 
+		margin: 0; 
+		padding-top: 0; 
+		background: url(images/tab_right_back.png) no-repeat right top; 
+		margin-right: 1px; 
+	} 
+
+	ul.tabs li a { 
+		display: block; 
+		overflow: hidden;
+		height: 12px !important;
+		height /**/:32px; /* for IE5/Win */ 
+		padding:  9px 7px; 
+		color: #00154A; 
+		text-decoration: none; 
+		background: url(images/tab_left_back.png) no-repeat left top; 
+	} 
+
+	
+	ul.tabs li:active, ul.tabs li.selected { 
+		background: url(images/tab_right_front.png) no-repeat right top; 
+		margin-right: 1px; 
+	} 
+
+	ul.tabs li a:active, ul.tabs li a.selected { 
+		background: url(images/tab_left_front.png) no-repeat left top; 
+	} 
+	
+	
+	</style>
+
+
+</head>
+
+
+<body>
+
+	<div id="tabs">
+	<h2>Tab Menu</h2>
+	  <ul class="tabs"> 
+		<li><a href="javascript:void(0)">Sites</a></li> 
+		<li><a href="javascript:void(0)">Display</a></li> 
+		<li><a href="javascript:void(0)">+</a></li> </ul>
+	</div>
+
+</body>
+</html>
