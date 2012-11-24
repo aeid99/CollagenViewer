@@ -32,29 +32,43 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 //--------------Collagen!!-----------------------------//	
 	else if(modelNumberL==1){ //collagen
 		if ( $("#"+idName).hasClass("highlight")) {
-			sitesPickedL[0]=0;
-			sitesPickedL[siteMenuIndex]=1;
-			var initialR=siteListNumL[1][siteMenuIndex];
-			var finalR=siteListNumL[2][siteMenuIndex];
-			if(siteListNumL[0][siteMenuIndex]==1){ // A or C chains
-				siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
-			}
-			else if(siteListNumL[0][siteMenuIndex]==2){ // B chain
-				siteString='select (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
-			}
-			else if((siteListNumL[0][siteMenuIndex]==3)){ // All three chains, will need to shift one by 7aa's
-				var initialR2=initialR-7;
-				var finalR2=finalR-7;
-				siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
-			}
-			
-			if(selectionType == 'Bind')
+			if(selectionType == "Bind")
 			{
+				sitesPickedL[0]=0;
+				sitesPickedL[siteMenuIndex]=1;
+				var initialR=siteListNumL[1][siteMenuIndex];
+				var finalR=siteListNumL[2][siteMenuIndex];
+				if(siteListNumL[0][siteMenuIndex]==1){ // A or C chains
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
+				}
+				else if(siteListNumL[0][siteMenuIndex]==2){ // B chain
+					siteString='select (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
+				}
+				else if((siteListNumL[0][siteMenuIndex]==3)){ // All three chains, will need to shift one by 7aa's
+					var initialR2=initialR-7;
+					var finalR2=finalR-7;
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
+				}			
 				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorL[siteMenuIndex]+';select *',imageSel); 	
 			}
-			else if(selectionType == 'Mut')
+			else if(selectionType == "Mutation")
 			{
-				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorL[siteMenuIndex]+';select *',imageSel); 	
+				sitesPickedLMutation[0]=0;
+				sitesPickedLMutation[siteMenuIndex]=1;
+				var initialR=siteListNumLMutation[1][siteMenuIndex];
+				var finalR=siteListNumLMutation[2][siteMenuIndex];
+				if(siteListNumLMutation[0][siteMenuIndex]==1){ // A or C chains
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
+				}
+				else if(siteListNumL[0][siteMenuIndex]==2){ // B chain
+					siteString='select (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
+				}
+				else if((siteListNumL[0][siteMenuIndex]==3)){ // All three chains, will need to shift one by 7aa's
+					var initialR2=initialR-7;
+					var finalR2=finalR-7;
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
+				}	
+				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorLMutation[siteMenuIndex]+';select *',imageSel); 	
 			}
 		} 
 		else{
@@ -89,10 +103,6 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 			siteString='select (1009,1014,1037,1080,1103,1127,1130,1177,1200,1220,1244,1266,1296,1316,1317,1319,1321,1325); define site'+siteMenuIndex+' selected;';//color atoms '+hoverColorL[siteMenuIndex]+';';
 
 			}
-			
-			//var initialR=siteListNumL[1][siteMenuIndex];
-			//var finalR=siteListNumL[2][siteMenuIndex];
-			//siteString=siteString+'select backbone and resno>='+initialR+' and resno<='+finalR+'; define site'+siteMenuIndex+' selected;';
 			jmolScript(siteString+'isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0;center selected;color isosurface '+hoverColorL[siteMenuIndex]+';halos 45%;color halos '+hoverColorL[siteMenuIndex]+'; select *',imageSel); 	
 		
 			//jmolScript(siteString+'set dotsSelectedOnly on;geosurface 1.3; color geosurface '+hoverColorL[siteMenuIndex]+';center selected;select *',imageSel); 	

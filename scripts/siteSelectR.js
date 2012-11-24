@@ -1,6 +1,6 @@
 //CHANGING THE COLOR OF THE MENU and selecting the site.
-function siteSelectR(siteMenuIndex,imageSel)
-{	var idName=siteMenuIndex+imageSel;	
+function siteSelectR(siteMenuIndex,imageSel, selectionType)
+{	var idName=siteMenuIndex+imageSel+selectionType;	
 	$("#"+idName).toggleClass("highlight");
 //--------------Default-----------------------------//		
 	if(modelNumberR==0){
@@ -27,24 +27,48 @@ function siteSelectR(siteMenuIndex,imageSel)
 //--------------Collagen!!-----------------------------//			
 	else if(modelNumberR==1){
 		if ( $("#"+idName).hasClass("highlight")) {
-			sitesPickedR[0]=0;
-			sitesPickedR[siteMenuIndex]=1;
-			var siteString="";
-			var initialR=siteListNumR[1][siteMenuIndex];
-			var finalR=siteListNumR[2][siteMenuIndex];
-			if(siteListNumR[0][siteMenuIndex]==1){
-				siteString=siteString+'select backbone and (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
+			if(selectionType == "Bind")
+			{		
+				sitesPickedR[0]=0;
+				sitesPickedR[siteMenuIndex]=1;
+				var siteString="";
+				var initialR=siteListNumR[1][siteMenuIndex];
+				var finalR=siteListNumR[2][siteMenuIndex];
+				if(siteListNumR[0][siteMenuIndex]==1){
+					siteString=siteString+'select backbone and (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
+				}
+				else if(siteListNumR[0][siteMenuIndex]==2){
+					siteString=siteString+'select backbone and (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
+				}
+				else if((siteListNumR[0][siteMenuIndex]==3)){
+					var initialR2=initialR-7;
+					var finalR2=finalR-7;
+					siteString=siteString+'select backbone and (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
+				}
+				jmolScript(siteString+';isosurface id sCol'+siteMenuIndex+' solvent 0; center selected; color isosurface '+hoverColorR[siteMenuIndex]+';select *;',imageSel); 	
 			}
-			else if(siteListNumR[0][siteMenuIndex]==2){
-				siteString=siteString+'select backbone and (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
-			}
-			else if((siteListNumR[0][siteMenuIndex]==3)){
-				var initialR2=initialR-7;
-				var finalR2=finalR-7;
-				siteString=siteString+'select backbone and (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
-			}
-			jmolScript(siteString+';isosurface id sCol'+siteMenuIndex+' solvent 0; center selected; color isosurface '+hoverColorR[siteMenuIndex]+';select *;',imageSel); 	
+			else if(selectionType == "Mutation")
+			{
+				sitesPickedRMutation[0]=0;
+				sitesPickedRMutation[siteMenuIndex]=1;
+				var initialR=siteListNumRMutation[1][siteMenuIndex];
+				var finalR=siteListNumRMutation[2][siteMenuIndex];
+				if(siteListNumRMutation[0][siteMenuIndex]==1){ // A or C chains
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';
+				}
+				else if(siteListNumR[0][siteMenuIndex]==2){ // B chain
+					siteString='select (:b and ('+initialR+'-'+finalR+')); define site'+siteMenuIndex+' selected;';	
+				}
+				else if((siteListNumR[0][siteMenuIndex]==3)){ // All three chains, will need to shift one by 7aa's
+					var initialR2=initialR-7;
+					var finalR2=finalR-7;
+					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
+				}	
+				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorRMutation[siteMenuIndex]+';select *',imageSel); 	
+			}		
+		
 		} 
+		
 		else{
 			sitesPickedR[siteMenuIndex]=0;
 			jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);

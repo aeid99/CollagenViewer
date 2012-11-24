@@ -9,7 +9,10 @@ id? = selMultiL*/
 
 //must make headers a global variable
 function molSelectL(modelID)
-{	document.getElementById("searchLeft").value="";  //Clears the search
+{
+
+	window = 'Left';
+	document.getElementById("searchLeft").value="";  //Clears the search
 	sitesPickedL[0]=1;
 	var atomSize=aSize[0];	// where is this coming from?!
 	var bondSize=bSize[0];
@@ -17,6 +20,7 @@ function molSelectL(modelID)
 	var siteString='';
 	var numSites=0;
 	var headersNum=new Array(5)
+	var headersNumMutation=new Array(5)
 	//	siteListNumL[0][indexofSite] = //Chain (1 is alpha 1=AC, and 2 is alpha2 = B and 3 = both!)
 		//	siteListNumL[1][indexofSite] = //initial value - for first chain
 		//	siteListNumL[2][indexofSite] = //final value	
@@ -26,23 +30,24 @@ function molSelectL(modelID)
 		headersNum[modelNumberL]=[0,1,3]
 		numSites=3;
 		hoverColorL=["","red","orange","yellow"];
+		hoverColorLMutation=["","red","orange","yellow"];
 		hoverMsgL[0][1]="Site 1";
 		hoverMsgL[0][2]="Site 2";
 		hoverMsgL[0][3]="Site 3";
 		siteString='define site1 atomno=1; define site2 atomno=2,atomno=3;define site3 atomno=1,atomno=3;';
-		jmolScript('load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;'+siteString,'Left');		
+		jmolScript('load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;'+siteString, "Left");		
 	}
 	
 	else if(modelID=="Collagen1")
-	{	jmolScript('load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;',"Left");	
+	{	
+		jmolScript('load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;', "Left");	
 		modelNumberL=1;
 		numSites=142;	//TODO: automatic
 		sitesPickedL=new Array(numSites+1);
-		sitesPickedL[0]=1;
+		sitesPickedL[0]=1; // WHY IS THIS AGAIN? 
 		hoverMsgL[1]=new Array(numSites);
 		headers[modelNumberL]=['','Proteoglycan','Cell Attachment','Cell Interaction','Signaling','Mineralization','Post Trans Modify','Collagenolysis','X-Link','Polymerizatin','Immunological','Misc:THP', 'Misc:HSP47','Misc'];
 		headersNum[modelNumberL]=[0,26,44,48,53,60,69,71,74,78,79,89,140,142];
-		
 		//NOTE: indexed as follows: hoverMsgL[modelNumberL][protein}
 //TODO: this should be parsed from a text file	
 //CHAIN NUMBER			INITIAL RESIDUE NUMBER	FINAL RESIDUE NUMBER	NAME
@@ -214,6 +219,32 @@ siteListNumL[0][140]=1;	siteListNumL[1][140]=1005;	siteListNumL[2][140]=1007;	ho
 siteListNumL[0][141]=1;	siteListNumL[1][141]=101;	siteListNumL[2][141]=115;	hoverMsgL[1][141]="Micro Unfolding";	hoverColorL[141]="chocolate";	
 siteListNumL[0][142]=1;	siteListNumL[1][142]=838;	siteListNumL[2][142]=1056;	hoverMsgL[1][142]="Amyloid Precursor";	hoverColorL[142]="chocolate";
 	
+	
+		numSitesMutation=10;	//TODO: automatic
+		sitesPickedLMutation=new Array(numSitesMutation+1);
+		sitesPickedLMutation[0]=1; // WHY IS THIS AGAIN? 
+		hoverMsgLMutation[1]=new Array(numSitesMutation);
+		headersMutation[modelNumberL]=['','Type I (mild)','Type II (lethal)','Type III (severe)'];
+		headersNumMutation[modelNumberL]=[0,3,8,10];
+//NOTE: indexed as follows: hoverMsgLMutation[modelNumberL][protein}
+//TODO: this should be parsed from a text file	
+//CHAIN NUMBER			INITIAL RESIDUE NUMBER	FINAL RESIDUE NUMBER	NAME
+// Type I (mild)
+siteListNumLMutation[0][1]=1;	siteListNumLMutation[1][1]=175;		siteListNumLMutation[2][1]=214;		hoverMsgLMutation[1][1]="MMP-1";		hoverColorLMutation[1]="yellow";
+siteListNumLMutation[0][2]=1;	siteListNumLMutation[1][2]=363;		siteListNumLMutation[2][2]=402;		hoverMsgLMutation[1][2]="MMP-2";		hoverColorLMutation[2]="yellow";	
+siteListNumLMutation[0][3]=1;	siteListNumLMutation[1][3]=103;		siteListNumLMutation[2][3]=106;		hoverMsgLMutation[1][3]="MMP-3";		hoverColorLMutation[3]="yellow";	
+
+// Type II (lethal)
+siteListNumLMutation[0][4]=1;	siteListNumLMutation[1][4]=467;		siteListNumLMutation[2][4]=477;		hoverMsgLMutation[1][4]="[PS]KSPG";				hoverColorLMutation[4]="green";	
+siteListNumLMutation[0][5]=1;	siteListNumLMutation[1][5]=581;		siteListNumLMutation[2][5]=591;		hoverMsgLMutation[1][5]="[PS]KSPG";				hoverColorLMutation[5]="green";	
+siteListNumLMutation[0][6]=1;	siteListNumLMutation[1][6]=617;		siteListNumLMutation[2][6]=627;		hoverMsgLMutation[1][6]="[PS]DSPG";			hoverColorLMutation[6]="green";	
+siteListNumLMutation[0][7]=1;	siteListNumLMutation[1][7]=638;		siteListNumLMutation[2][7]=648;		hoverMsgLMutation[1][7]="[PS]DSPG";			hoverColorLMutation[7]="green";	
+siteListNumLMutation[0][8]=1;	siteListNumLMutation[1][8]=872;		siteListNumLMutation[2][8]=882;		hoverMsgLMutation[1][8]="[PS]DSPG";			hoverColorLMutation[8]="green";	
+	
+// 	Type III (severe)
+siteListNumLMutation[0][9]=1;	siteListNumLMutation[1][9]=902;		siteListNumLMutation[2][9]=912;		hoverMsgLMutation[1][9]="[PS]DSPG";			hoverColorLMutation[9]="blue";	
+siteListNumLMutation[0][10]=1;	siteListNumLMutation[1][10]=869;	siteListNumLMutation[2][10]=877;	hoverMsgLMutation[1][10]="DSPG";				hoverColorLMutation[10]="blue";	
+	
 	}
 
 	else if(modelID=="Collagen3")
@@ -223,7 +254,7 @@ siteListNumL[0][142]=1;	siteListNumL[1][142]=838;	siteListNumL[2][142]=1056;	hov
 		jmolScript('load jmol/models/080906-d-band-wide-decmon-upright-mined-COLLAGEN.pdb;select all;spacefill '+atomSize+'%;wireframe'+ bondSize+';color cpk;',"Left");
 	}
 	else if(modelID=="Decorin")
-	{	jmolScript('load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;',"Left");
+	{	jmolScript('load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;', 'Left');
 		modelNumberL=3;
 		numSites=4;
 		sitesPickedL=new Array(numSites+1);
@@ -248,38 +279,60 @@ siteListNumL[0][142]=1;	siteListNumL[1][142]=838;	siteListNumL[2][142]=1056;	hov
 	{	modelNumberL=4;
 		headers[modelNumberL]=['','No Sites Available'];
 		headersNum[modelNumberL]=[''];
-		jmolScript('load jmol/models/practice.pdb; select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;define site1 atomno<213;define site2 atomno>15000;',"Left");
+		jmolScript('load jmol/models/practice.pdb; select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;define site1 atomno<213;define site2 atomno>15000;', 'Left');
 	}
 
 	
 	
 //------------------------------------CHANGING the TABLE-------------------------------------------------	
-		//add headers
+	// Binding Sites
+	var table ="";
+	var siteNumber=0;		
+	$('#accordion').html("");		
+	for (i=1;i<=headers[modelNumberL].length-1;i++){
+		var headerTitle="header"+i;
+		table += '<li><a href="#'+headerTitle+'" class="heading">'+headers[modelNumberL][i]+'</a><ul id ='+headerTitle+'>';
 		
-		var table ="";
-		var siteNumber=0;
-		
-		$('#accordion').html("");
-		
-		for (i=1;i<=headers[modelNumberL].length-1;i++){
-			var headerTitle="header"+i;
-			table += '<li><a href="#'+headerTitle+'" class="heading">'+headers[modelNumberL][i]+'</a><ul id ='+headerTitle+'>';
+		//add sites within each header 
+		var headerLength=headersNum[modelNumberL][i]-headersNum[modelNumberL][i-1];
+		for(j=1;j<=headerLength;j++){
+			siteNumber=siteNumber+1;
 			
-			//add sites within each header 
-			var headerLength=headersNum[modelNumberL][i]-headersNum[modelNumberL][i-1];
-			for(j=1;j<=headerLength;j++){
-				siteNumber=siteNumber+1;
-				table += '<li id="'+siteNumber+'Left" onClick="siteSelectL('+siteNumber+',\'Left\')"><a href="javascript:void(0)">'+hoverMsgL[modelNumberL][siteNumber]+'</a></li>';
-			}
-			table += '</ul></li>';
-			
+			table += '<li id="'+siteNumber+'LeftBind" onClick="siteSelectL('+siteNumber+',\'Left\',\'Bind\')"><a href="javascript:void(0)">'+hoverMsgL[modelNumberL][siteNumber]+'</a></li>';
 		}
-		$('#accordion').append(table).accordion('destroy');
-		$('#accordion').accordion({
-				autoHeight: false,
-				collapsible: true,
-				navigation: true				
-		});	
+		table += '</ul></li>';
+	}
+	$('#accordion').append(table).accordion('destroy');
+	$('#accordion').accordion({
+			autoHeight: false,
+			collapsible: true,
+			navigation: true				
+	});	
+	
+	
+	// Mutation Sites
+	var table ="";
+	var siteNumber=0;		
+	$('#mutateAccordion').html("");		
+	for (i=1;i<=headersMutation[modelNumberL].length-1;i++){
+		var headerTitle="header"+i;
+		table += '<li><a href="#'+headerTitle+'" class="heading">'+headersMutation[modelNumberL][i]+'</a><ul id ='+headerTitle+'>';
+		
+		//add sites within each header 
+		var headerLength=headersNumMutation[modelNumberL][i]-headersNumMutation[modelNumberL][i-1];
+		for(j=1;j<=headerLength;j++){
+			siteNumber=siteNumber+1;
+			table += '<li id="'+siteNumber+'LeftMutation" onClick="siteSelectL('+siteNumber+',\'Left\',\'Mutation\')"><a href="javascript:void(0)">'+hoverMsgLMutation[modelNumberL][siteNumber]+'</a></li>';
+		}
+		table += '</ul></li>';
+	}
+	$('#mutateAccordion').append(table).accordion('destroy');
+	$('#mutateAccordion').accordion({
+			autoHeight: false,
+			collapsible: true,
+			navigation: true				
+	});
+		
 }
 
 

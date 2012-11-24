@@ -128,21 +128,21 @@
 					   <li>  
 						   <a href="#head1" class="heading">Default 1</a>  
 						   <ul id="head1">  
-							  <li id="1Left" onClick="siteSelectL(1,'Left')"><a href="javascript:void(0)">Protein 1a</a></li>  
-							  <li id="2Left" onClick="siteSelectL(2,'Left')"><a href="javascript:void(0)">Protein 1b</a></li>
+							  <li id="1LeftBind" onClick="siteSelectL(1,'Left','Bind')"><a href="javascript:void(0)">Protein 1a</a></li>  
+							  <li id="2LeftBind" onClick="siteSelectL(2,'Left','Bind')"><a href="javascript:void(0)">Protein 1b</a></li>
 						   </ul>  
 					   </li>  
 					   <li>  
 						   <a href="#head2" class="heading">Default 2</a>  
 						   <ul id="head2">  
-							  <li id="3Left" onClick="siteSelectL(3,'Left')"><a href="#">Protein 2a</a></li> 
+							  <li id="3LeftBind" onClick="siteSelectL(3,'Left','Bind')"><a href="#">Protein 2a</a></li> 
 						   </ul>  
 					   </li>    
 					</ul>
 				</div>
 
 				<div align="center">
-					<input onClick="siteClear('Left');" type="button" value="Reset" />
+					<input onClick="siteClear('Left','Bind');" type="button" value="Reset" />
 				</div>
 				<br /><br />
 				
@@ -152,21 +152,21 @@
 					   <li>  
 						   <a href="#mut1" class="heading">Type I (mild)</a>  
 						   <ul id="mut1">  
-							  <li id="1LeftMut" onClick=""><a href="javascript:void(0)">MMP-1</a></li>  
-							  <li id="2LeftMut" onClick=""><a href="javascript:void(0)">MMP-2</a></li>
+							  <li id="1LeftMutation" onClick="siteSelectL(1,'Left','Mutation')"><a href="javascript:void(0)">MMP-1</a></li>  
+							  <li id="2LeftMutation" onClick="siteSelectL(2,'Left','Mutation')"><a href="javascript:void(0)">MMP-2</a></li>
 						   </ul>  
 					   </li>  
 					   <li>  
 						   <a href="#mut2" class="heading">Type II (lethal)</a>  
 						   <ul id="mut2">  
-							  <li id="3LeftMut" onClick=""><a href="javascript:void(0)">MFS</a></li> 
-							  <li id="4LeftMut" onClick=""><a href="javascript:void(0)">ICA</a></li> 
+							  <li id="3LeftMutation" onClick="siteSelectL(3,'Left','Mutation')"><a href="javascript:void(0)">MFS</a></li> 
+							  <li id="4LeftMutation" onClick="siteSelectL(4,'Left','Mutation')"><a href="javascript:void(0)">ICA</a></li> 
 						   </ul>  
 					   </li>   
 						<li>  
 						   <a href="#mut3" class="heading">Type III (severe)</a>  
 						   <ul id="mut3">  
-							  <li id="5LeftMut" onClick=""><a href="javascript:void(0)">OI</a></li> 
+							  <li id="5LeftMutation" onClick="siteSelectL(5,'Left','Mutation')"><a href="javascript:void(0)">OI</a></li> 
 						   </ul>  
 					   </li> 
  
@@ -174,7 +174,7 @@
 				</div>
 				
 				<div align="center">
-					<input onClick="siteClear('Left');" type="button" value="Reset" />
+					<input onClick="siteClear('Left','Mutation');" type="button" value="Reset" />
 				</div>
 				<br/><br/>
 				</div> <!--Sites tab - end div-->
@@ -385,14 +385,14 @@
 					   <li>  
 						   <a href="#head1" class="heading">Default 1</a>  
 						   <ul id="head1">  
-							  <li id="1Right" onClick="siteSelectR(1,'Right')"><a href="javascript:void(0)">Protein 1a</a></li>  
-							  <li id="2Right" onClick="siteSelectR(2,'Right')"><a href="javascript:void(0)">Protein 1b</a></li>
+							  <li id="1RightBind" onClick="siteSelectR(1,'Right','Bind')"><a href="javascript:void(0)">Protein 1a</a></li>  
+							  <li id="2RightBind" onClick="siteSelectR(2,'Right','Bind')"><a href="javascript:void(0)">Protein 1b</a></li>
 						   </ul>  
 					   </li>  
 					   <li>  
 						   <a href="#head2" class="heading">Default 2</a>  
 						   <ul id="head2">  
-							  <li id="3Right" onClick="siteSelectR(3,'Right')"><a href="javascript:void(0)">Protein 2a</a></li> 
+							  <li id="3RightBind" onClick="siteSelectR(3,'Right','Bind')"><a href="javascript:void(0)">Protein 2a</a></li> 
 						   </ul>  
 					   </li>    
 					</ul>
@@ -401,7 +401,7 @@
 				
 				<!-------ACCESSIBILITY MAP---->
 				<div align="center">
-					<input onClick="siteClear('Right');" type="button" value="Reset" />
+					<input onClick="siteClear('Right','Bind');" type="button" value="Reset" />
 				</div>
 				<br/><br/>
 				
@@ -411,21 +411,21 @@
 					   <li>  
 						   <a href="#mutR1" class="heading">Type I (mild)</a>  
 						   <ul id="mutR1">  
-							  <li id="1LeftMut" onClick=""><a href="javascript:void(0)">MMP-1</a></li>  
-							  <li id="2LeftMut" onClick=""><a href="javascript:void(0)">MMP-2</a></li>
+							  <li id="1RightMutation" onClick="siteSelectL(1,'Right','Mutation')"><a href="javascript:void(0)">OI</a></li> 
+							  <li id="2RightMutation" onClick="siteSelectL(2,'Right','Mutation')"><a href="javascript:void(0)">OI</a></li> 
 						   </ul>  
 					   </li>  
 					   <li>  
 						   <a href="#mutR2" class="heading">Type II (lethal)</a>  
 						   <ul id="mutR2">  
-							  <li id="3LeftMut" onClick=""><a href="javascript:void(0)">MFS</a></li> 
-							  <li id="4LeftMut" onClick=""><a href="javascript:void(0)">ICA</a></li> 
+							  <li id="3RightMutation" onClick="siteSelectL(3,'Right','Mutation')"><a href="javascript:void(0)">OI</a></li> 
+							  <li id="4RightMutation" onClick="siteSelectL(4,'Right','Mutation')"><a href="javascript:void(0)">OI</a></li> 
 						   </ul>  
 					   </li>   
 						<li>  
 						   <a href="#mutR3" class="heading">Type III (severe)</a>  
 						   <ul id="mutR3">  
-							  <li id="5LeftMut" onClick=""><a href="javascript:void(0)">OI</a></li> 
+							  <li id="5RightMutation" onClick="siteSelectL(5,'Right','Mutation')"><a href="javascript:void(0)">OI</a></li> 
 						   </ul>  
 					   </li> 
  
@@ -434,7 +434,7 @@
 						
 			
 				<div align="center">
-					<input onClick="siteClear('Right');" type="button" value="Reset" />
+					<input onClick="siteClear('Right','Mutation');" type="button" value="Reset" />
 				</div>
 				<br/><br/>
 				</div> <!--Sites tab - end div-->
