@@ -6,7 +6,7 @@
 	function searchSeq(imageSel,action)
 	{	var modelNumber=0;
 		if(imageSel=='Right'){modelNumber=1;}
-		jmolScript('select all; halos off;',imageSel);
+		Jmol.script(myJmol,'select all; halos off;',imageSel);
 		if(action!="Clear"){
 			//FIRST WE SAVE THE FOUND SITES 
 			var initA=0;	//maybe when you click next, you will need this saved as aglobal variable and unchanged
@@ -81,7 +81,7 @@
 					if(action=="Next"){
 						sitesShown[modelNumber]=1;
 						for(k=1;k<=sitesTotal[modelNumber];k++){
-							jmolScript('select all; hover off; halos off; isosurface ID search'+imageSel+k+' delete;',imageSel);
+							Jmol.script(myJmol,'select all; hover off; halos off; isosurface ID search'+imageSel+k+' delete;',imageSel);
 						}
 						
 						if(searchIndex[modelNumber]<=sitesTotal[modelNumber]){
@@ -91,7 +91,7 @@
 								var fin=init+seqLength;
 								if(sitesFound[1][searchIndex[modelNumber]]==1){selectString='(:a and ('+init+'-'+fin+')) or (:c and ('+init+'-'+fin+'))';}
 								else if(sitesFound[1][searchIndex[modelNumber]]==2){selectString='(:b and ('+init+'-'+fin+'))';}
-								jmolScript('select '+selectString+'; define siteSearch'+imageSel+'1 selected; isosurface ID search'+imageSel+'1 solvent 0; color isosurface lime; center selected; select all;',imageSel);				 
+								Jmol.script(myJmol,'select '+selectString+'; define siteSearch'+imageSel+'1 selected; isosurface ID search'+imageSel+'1 solvent 0; color isosurface lime; center selected; select all;',imageSel);				 
 							}
 						}
 						else{
@@ -110,7 +110,7 @@
 								else if(sitesFound[1][k]==2){selectString=selectString+'select (:b and ('+init+'-'+fin+')); define siteSearch'+imageSel+k+' selected; isosurface id search'+imageSel+k+' solvent 0; color isosurface lime;';}		 
 							}
 						}
-						jmolScript(selectString+'select all;',imageSel);
+						Jmol.script(myJmol,selectString+'select all;',imageSel);
 					
 					
 					
@@ -139,7 +139,7 @@
 
 		else if(action=="Clear"){
 			for(k=1;k<=sitesShown[modelNumber];k++){
-				jmolScript('select all; hover off; halos off; isosurface ID search'+imageSel+k+' delete;',imageSel);
+				Jmol.script(myJmol,'select all; hover off; halos off; isosurface ID search'+imageSel+k+' delete;',imageSel);
 			}
 			document.getElementById("search"+imageSel).value="";
 			sitesShown[modelNumber]=0;

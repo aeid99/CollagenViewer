@@ -35,12 +35,19 @@ function molSelectL(modelID)
 		hoverMsgL[0][2]="Site 2";
 		hoverMsgL[0][3]="Site 3";
 		siteString='define site1 atomno=1; define site2 atomno=2,atomno=3;define site3 atomno=1,atomno=3;';
-		jmolScript('load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;'+siteString, "Left");		
+		//jmolScript('load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 80;'+siteString, "Left");	
+
+		Jmol.script(myJmol, 'load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 80;')		
 	}
 	
 	else if(modelID=="Collagen1")
 	{	
-		jmolScript('load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;', "Left");	
+
+
+		Jmol.script(myJmol, 'load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;')
+	
+	
+		//jmolScript('load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;', "Left");	
 		modelNumberL=1;
 		numSites=142;	//TODO: automatic
 		sitesPickedL=new Array(numSites+1);
@@ -254,7 +261,10 @@ siteListNumLMutation[0][10]=1;	siteListNumLMutation[1][10]=869;	siteListNumLMuta
 		jmolScript('load jmol/models/080906-d-band-wide-decmon-upright-mined-COLLAGEN.pdb;select all;spacefill '+atomSize+'%;wireframe'+ bondSize+';color cpk;',"Left");
 	}
 	else if(modelID=="Decorin")
-	{	jmolScript('load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;', 'Left');
+	{	
+
+		Jmol.script(myJmol, 'load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;')		
+//jmolScript('load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;', 'Left');
 		modelNumberL=3;
 		numSites=4;
 		sitesPickedL=new Array(numSites+1);
@@ -279,6 +289,8 @@ siteListNumLMutation[0][10]=1;	siteListNumLMutation[1][10]=869;	siteListNumLMuta
 	{	modelNumberL=4;
 		headers[modelNumberL]=['','No Sites Available'];
 		headersNum[modelNumberL]=[''];
+		
+		
 		jmolScript('load jmol/models/practice.pdb; select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;define site1 atomno<213;define site2 atomno>15000;', 'Left');
 	}
 

@@ -21,11 +21,15 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 			else if(siteMenuIndex==3){
 				siteString='define site3 atomno=1,atomno=3;';	
 			}
-			jmolScript(siteString+'select site'+siteMenuIndex+';isosurface id sCol'+siteMenuIndex+' solvent 0; color isosurface '+hoverColorL[siteMenuIndex],imageSel); 	
+			
+			Jmol.script(myJmol,siteString+'select site'+siteMenuIndex+';isosurface id sCol'+siteMenuIndex+' solvent 0; color isosurface '+hoverColorL[siteMenuIndex],imageSel);
+			//jmolScript(siteString+'select site'+siteMenuIndex+';isosurface id sCol'+siteMenuIndex+' solvent 0; color isosurface '+hoverColorL[siteMenuIndex],imageSel); 	
 		} 
 		else{
 			sitesPickedL[siteMenuIndex]=0;
-			jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
+			
+			Jmol.script(myJmol,'select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);	
+			//jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
 		}
 	}
 
@@ -48,8 +52,11 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 					var initialR2=initialR-7;
 					var finalR2=finalR-7;
 					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
-				}			
-				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorL[siteMenuIndex]+';select *',imageSel); 	
+				}
+
+		
+				Jmol.script(myJmol, siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorL[siteMenuIndex]+';select *',imageSel); 	
+				//jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorL[siteMenuIndex]+';select *',imageSel); 	
 			}
 			else if(selectionType == "Mutation")
 			{
@@ -68,12 +75,17 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 					var finalR2=finalR-7;
 					siteString='select (:a and ('+initialR+'-'+finalR+')) or (:c and ('+initialR+'-'+finalR+')) or (:b and ('+initialR2+'-'+finalR2+')); define site'+siteMenuIndex+' selected;';
 				}	
-				jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorLMutation[siteMenuIndex]+';select *',imageSel); 	
+				
+				
+				Jmol.script(myJmol,siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorLMutation[siteMenuIndex]+';select *',imageSel); 	
+				
+				//jmolScript(siteString+';isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0; center selected;color isosurface '+hoverColorLMutation[siteMenuIndex]+';select *',imageSel); 	
 			}
 		} 
 		else{
 			sitesPickedL[siteMenuIndex]=0;
-			jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
+			Jmol.script(myJmol,'select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
+			//jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
 		}
 	}
 		
@@ -103,13 +115,16 @@ function siteSelectL(siteMenuIndex,imageSel,selectionType){
 			siteString='select (1009,1014,1037,1080,1103,1127,1130,1177,1200,1220,1244,1266,1296,1316,1317,1319,1321,1325); define site'+siteMenuIndex+' selected;';//color atoms '+hoverColorL[siteMenuIndex]+';';
 
 			}
-			jmolScript(siteString+'isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0;center selected;color isosurface '+hoverColorL[siteMenuIndex]+';halos 45%;color halos '+hoverColorL[siteMenuIndex]+'; select *',imageSel); 	
+			
+			Jmol.script(myJmol, siteString+'isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0;center selected;color isosurface '+hoverColorL[siteMenuIndex]+';halos 45%;color halos '+hoverColorL[siteMenuIndex]+'; select *',imageSel); 	
+			//jmolScript(siteString+'isosurface sCol'+siteMenuIndex+' select(site'+siteMenuIndex+') ignore(not site'+siteMenuIndex+') solvent 0;center selected;color isosurface '+hoverColorL[siteMenuIndex]+';halos 45%;color halos '+hoverColorL[siteMenuIndex]+'; select *',imageSel); 	
 		
 			//jmolScript(siteString+'set dotsSelectedOnly on;geosurface 1.3; color geosurface '+hoverColorL[siteMenuIndex]+';center selected;select *',imageSel); 	
 		} 
 		else{
 			sitesPickedL[siteMenuIndex]=0;
-			jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
+			Jmol.script(myJmol, 'select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
+			//jmolScript('select site'+siteMenuIndex+';halos off;isosurface sCol'+siteMenuIndex+' off;',imageSel);
 		}
 	}
 
@@ -135,7 +150,9 @@ function siteClear(imageSel,selectionType){
 		idName=i+imageSel+selectionType;
 		if ( $("#"+idName).hasClass("highlight")) {
 			$("#"+idName).toggleClass("highlight");
-			jmolScript('select all; hover off; halos off; isosurface id sCol'+i+' delete;',imageSel); 				
+			
+			Jmol.script(myJmol, 'select all; hover off; halos off; isosurface id sCol'+i+' delete;',imageSel); 				
+			//jmolScript('select all; hover off; halos off; isosurface id sCol'+i+' delete;',imageSel); 				
 		}	
 	}
 }

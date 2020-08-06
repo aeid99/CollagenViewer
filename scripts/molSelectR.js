@@ -33,11 +33,11 @@ function molSelectR(modelID)
 		hoverMsgR[0][2]="Site 2";
 		hoverMsgR[0][3]="Site 3";
 		siteString='define site1 atomno=1; define site2 atomno=2,atomno=3;define site3 atomno=1,atomno=3;';
-		jmolScript('load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;'+siteString, 'Right');		
+		Jmol.script(myJmolR,'load jmol/models/practice.pdb;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;'+siteString, 'Right');		
 	}
 	
 	else if(modelID=="Collagen1")
-	{	jmolScript('load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;', 'Right');	
+	{	Jmol.script(myJmolR,'load jmol/models/collagen-Access.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 200;', 'Right');	
 		modelNumberR=1;
 		numSites=142;	//TODO: automatic
 		sitesPickedR=new Array(numSites+1);
@@ -249,10 +249,10 @@ siteListNumRMutation[0][10]=1;	siteListNumRMutation[1][10]=869;	siteListNumRMuta
 	{	modelNumberR=2;
 		headers[modelNumberR]=['','No Sites Available'];
 		headersNum[modelNumberR]=[''];
-		jmolScript('load jmol/models/080906-d-band-wide-decmon-upright-mined-COLLAGEN.pdb;select all;spacefill '+atomSize+'%;wireframe'+ bondSize+';color cpk;','Right');
+		Jmol.script(myJmolR,'load jmol/models/080906-d-band-wide-decmon-upright-mined-COLLAGEN.pdb;select all;spacefill '+atomSize+'%;wireframe'+ bondSize+';color cpk;','Right');
 	}
 	else if(modelID=="Decorin")
-	{	jmolScript('load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;', 'Right');
+	{	Jmol.script(myJmolR,'load jmol/models/080122-new-c-n-dec-mon-minimized.pdb;display backbone;select hidden; delete selected;select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;', 'Right');
 		modelNumberR=3;
 		numSites=4;
 		sitesPickedR=new Array(numSites+1);
@@ -277,7 +277,7 @@ siteListNumRMutation[0][10]=1;	siteListNumRMutation[1][10]=869;	siteListNumRMuta
 	{	modelNumberR=4;
 		headers[modelNumberR]=['','No Sites Available'];
 		headersNum[modelNumberR]=[''];
-		jmolScript('load jmol/models/practice.pdb; select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;define site1 atomno<213;define site2 atomno>15000;', 'Right');
+		Jmol.script(myJmolR,'load jmol/models/practice.pdb; select all;spacefill '+atomSize+'%;wireframe '+bondSize+';color cpk;zoom 100;define site1 atomno<213;define site2 atomno>15000;', 'Right');
 	}
 
 	
