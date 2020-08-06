@@ -24,10 +24,10 @@
 	<script type="text/javascript" src="scripts/siteSelectR.js"></script>
 	<style type="text/css">
 		#JmolDivL { width:50vmin; height:70vmin; }
-		td { padding:0.3em; }
+		td { padding:0.1em; }
 		
 		#JmolDivR { width:50vmin; height:70vmin; }
-		td { padding:0.3em; }
+		td { padding:0.1em; }
 	</style>
 	
 	<script type="text/javascript">
@@ -85,12 +85,12 @@
 		
 		$(document).ready(function(){
 		  $('#JmolDivL').html( Jmol.getAppletHtml(myJmol, JmolInfo) );
-			Jmol.script(myJmol, 'load jmol/models/practice.pdb');
+			Jmol.script(myJmol, 'load models/practice.pdb');
 		});
 		
 		$(document).ready(function(){
 		  $('#JmolDivR').html( Jmol.getAppletHtml(myJmolR, JmolInfoR) );
-			Jmol.script(myJmolR, 'load jmol/models/practice.pdb');
+			Jmol.script(myJmolR, 'load models/practice.pdb');
 		});
 		
 		$(function(){$('#tabs').tabs();});
@@ -122,10 +122,6 @@
     </div> <!-- menuTop -->
 
 <div id="contentwrapper">
-
-	 <script type="text/javascript">
-    	jmolInitialize("jmol"); 
-      </script>
 	  
 	<table border="1" align="center">		<!--This centers it on the page-->
 		<tr align="center">		<!--This centers it within the table-->
@@ -257,28 +253,26 @@
 						
 						<b>Atoms: </b>
 						<script type="text/javascript">
-							jmolSetTarget('Left');
-							jmolMenu([
+							Jmol.jmolMenu(myJmol,[
 							["select all;color atoms cpk","Default"],
 							["select all;color atoms white","White"],
 							["select all; color atoms black","Black"],
 							["select :a;color lightblue;select :b;color lightsalmon;select :c;color lightgreen;select all","By Chain"]]);
-							jmolBr();
+							Jmol.jmolHtml("<br>");
 						</script>	
 						
 						<b>Background: </b>
 						<script type="text/javascript">
 						//This portion is not selective to the image chosen
 							// Background Color menu:
-							jmolSetTarget('Left');
-							jmolMenu([
+							Jmol.jmolMenu(myJmol,[
 							["background white","White"],
 							["background black","Black"],
 							["background skyblue","Blue"],
 							["background yellow","Yellow"],
 							["background salmon","Salmon"],
 							["background palegreen","Green"]]);
-							jmolBr();	
+							Jmol.jmolHtml("<br>");
 						</script>	
 						
 						
@@ -512,27 +506,25 @@
 					<h3>Color</h3>
 						<b>Atoms: </b>
 						<script type="text/javascript">
-							jmolSetTarget('Right');
-							jmolMenu([
+							Jmol.jmolMenu(myJmolR,[
 							["select all;color atoms cpk","Default"],
 							["select all;color atoms white","White"],
 							["select all; color atoms black","Black"],
 							["select :a;color lightgreen;select :b;color lightblue;select :c;color lightsalmon;select all","By Chain"]]);
-							jmolBr();
+							Jmol.jmolHtml("<br>");
 						</script>	
 						<b>Background: </b>
 						<script type="text/javascript">
 						//This portion is not selective to the image chosen
 							// Background Color menu:
-							jmolSetTarget('Right');
-							jmolMenu([
+							Jmol.jmolMenu(myJmolR,[
 							["background white","White"],
 							["background black","Black"],
 							["background skyblue","Blue"],
 							["background yellow","Yellow"],
 							["background salmon","Salmon"],
 							["background palegreen","Green"]]);
-							jmolBr();		
+							Jmol.jmolHtml("<br>");
 						</script>			
 					<br/><br/>
 						<h3>Effects</h3>

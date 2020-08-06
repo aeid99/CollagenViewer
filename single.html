@@ -21,7 +21,7 @@
 	<script type="text/javascript" src="scripts/siteSelectL.js"></script>
 	<style type="text/css">
 		#JmolDiv { width:100vmin; height:50vmin; }
-		td { padding:0.3em; }
+		td { padding:0em; }
 	</style>
 	<script type="text/javascript">
 			var myJmol = 'myJmol';
@@ -54,7 +54,7 @@
 
 			$(document).ready(function(){
 			  $('#JmolDiv').html( Jmol.getAppletHtml(myJmol, JmolInfo) );
-				Jmol.script(myJmol, 'load jmol/models/practice.pdb');
+				Jmol.script(myJmol, 'load models/practice.pdb');
 			});
 			
 		$(function(){$('#tabs').tabs();});
@@ -211,31 +211,33 @@
 					
 					</br>	
 					
-					<!--
+					
 					<h3>Color</h3>
 						<b>Atoms: </b>
 						<script type="text/javascript">
-							jmolSetTarget('Left')
-							jmolMenu([
+					
+							//Jmol.jmolSetTarget('Left')
+							Jmol.jmolMenu(myJmol,[
 							["select all;color atoms cpk","Default"],
 							["select all;color atoms white","White"],
 							["select all; color atoms black","Black"],
 							["select :a;color lightgreen;select :b;color lightblue;select :c;color lightsalmon;select all","By Chain"]]);
-							jmolBr();
+							Jmol.jmolHtml("<br>");
 						</script>	
 						<b>Background: </b>
 						<script type="text/javascript">
 						//This portion is not selective to the image chosen
 							// Background Color menu:							
-							jmolSetTarget('Left');
-							jmolMenu([
+							//jmolSetTarget('Left');
+							Jmol.jmolMenu(myJmol,[
 							["background white","White"],
 							["background black","Black"],
 							["background skyblue","Blue"],
 							["background yellow","Yellow"],
-							/["background salmon","Salmon"],
+							["background salmon","Salmon"],
 							["background palegreen","Green"]]);
-							jmolBr();		
+							//jmolBr();
+							Jmol.jmolHtml("<br>");							
 						</script>	
 						<br/><br/>
 						<!--Allows selected model to start or stop spinning -->
@@ -277,7 +279,11 @@
 			</td>  <!--lEFT MENU-->
 			
 			<td>	<!--Left Jmol Applet-->
-				<div id="JmolDiv">	</div>
+				<div id="JmolDiv">	
+					<div id="myJmol_appletinfotablediv" style="width:100%;height:100%;position:relative;font-size:14px;text-align:left"> 
+					<img id="myJmol_waitimage" src="./images/cursor_wait.gif">
+					</div>
+				</div>
 <!--				
 
 					<div id="myJmol_appletinfotablediv" style="width:100%;height:100%;position:relative; font-size:14px;text-align:left"> 
