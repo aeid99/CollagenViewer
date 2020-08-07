@@ -54,7 +54,7 @@
 
 			$(document).ready(function(){
 			  $('#JmolDiv').html( Jmol.getAppletHtml(myJmol, JmolInfo) );
-				Jmol.script(myJmol, 'load models/practice.pdb');
+				Jmol.script(myJmol, 'load models/practice.pdb; set hoverCallback "customhoverL";');
 			});
 			
 		$(function(){$('#tabs').tabs();});

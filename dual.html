@@ -85,12 +85,12 @@
 		
 		$(document).ready(function(){
 		  $('#JmolDivL').html( Jmol.getAppletHtml(myJmol, JmolInfo) );
-			Jmol.script(myJmol, 'load models/practice.pdb');
+			Jmol.script(myJmol, 'load models/practice.pdb; set hoverCallback "customhoverL";');
 		});
 		
 		$(document).ready(function(){
 		  $('#JmolDivR').html( Jmol.getAppletHtml(myJmolR, JmolInfoR) );
-			Jmol.script(myJmolR, 'load models/practice.pdb');
+			Jmol.script(myJmolR, 'load models/practice.pdb; set hoverCallback "customhoverR";');
 		});
 		
 		$(function(){$('#tabs').tabs();});
