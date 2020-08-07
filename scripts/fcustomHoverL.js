@@ -9,7 +9,7 @@ function customhoverL(){
 	var i=1;
 	 
 	for(k=1;k<=sitesShown[0];k++){
-		searchedSite = jmolEvaluate('script("var j=\'true\';if({atomIndex=_atomHovered}&{siteSearchLeft'+k+'});print j;end if")','Left')
+		searchedSite = Jmol.evaluateVar(myJmol,'script("var j=\'true\';if({atomIndex=_atomHovered}&{siteSearchLeft'+k+'});print j;end if")','Left')
 		if(searchedSite&&(document.getElementById("searchLeft").value!="")){
 			searchHover=1;
 			hoverMsgVal=hoverMsgVal+1;
@@ -28,7 +28,7 @@ function customhoverL(){
 		while(i < sitesPickedL.length){
 			if(sitesPickedL[i]===1){
 			//goes through every site and determines if it is being hovered..
-				boolSite = jmolEvaluate('script("var i=\'true\';if({atomIndex=_atomHovered}&{site'+i+'});print i;end if")',"Left")
+				boolSite = Jmol.evaluateVar(myJmol,'script("var i=\'true\';if({atomIndex=_atomHovered}&{site'+i+'});print i;end if")',"Left")
 				if(boolSite){
 					hoverMsgVal=hoverMsgVal+1;
 					if(hoverMsgVal>1){hoverMsg=hoverMsg+"|"}

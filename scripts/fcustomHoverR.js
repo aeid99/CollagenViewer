@@ -7,7 +7,7 @@ function customhoverR(){
 	var i=1;
  
 	for(k=1;k<=sitesShown[1];k++){
-		searchedSite = jmolEvaluate('script("var j=\'true\';if({atomIndex=_atomHovered}&{siteSearchRight'+k+'});print j;end if")','Right')
+		searchedSite = Jmol.evaluateVar(myJmolR,'script("var j=\'true\';if({atomIndex=_atomHovered}&{siteSearchRight'+k+'});print j;end if")','Right')
 		if(searchedSite&&(document.getElementById("searchRight").value!="")){
 			searchHover=1;
 			hoverMsgVal=hoverMsgVal+1;
@@ -26,7 +26,7 @@ function customhoverR(){
 		while(i < sitesPickedR.length){
 			if(sitesPickedR[i]===1){
 			//goes through every site and determines if it is being hovered..
-				boolSite = jmolEvaluate('script("var i=\'true\';if({atomIndex=_atomHovered}&{site'+i+'});print i;end if")',"Right")
+				boolSite = Jmol.evaluateVar(myJmolR,'script("var i=\'true\';if({atomIndex=_atomHovered}&{site'+i+'});print i;end if")',"Right")
 				if(boolSite){
 					hoverMsgVal=hoverMsgVal+1;
 					if(hoverMsgVal>1){hoverMsg=hoverMsg+"|"}
